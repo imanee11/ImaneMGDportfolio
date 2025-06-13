@@ -1,3 +1,4 @@
 export default{
-    // nagi : require("../assets/images/nagi.jfif")
+    bg : require("../assets/images/bg.jpg"),
+    
 }
