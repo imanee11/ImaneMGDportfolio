@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { DarkModeContext } from '../../context/DarkModeContext';
+import { FiMenu, FiX } from 'react-icons/fi';
 
 const NavBar = () => {
     const { darkMode } = useContext(DarkModeContext);
     const [scrolled, setScrolled] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -13,40 +15,55 @@ const NavBar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Background & text color after scroll
+    const toggleMenu = () => {
+        setIsMobileMenuOpen(prev => !prev);
+    };
+
     const bgClass = scrolled
         ? darkMode
             ? 'bg-black text-white'
             : 'bg-white text-black shadow-md'
         : 'bg-transparent text-white';
 
-    // Border color logic
     const borderClass = scrolled
         ? darkMode
-            ? 'border-black/50' // ✅ Dark mode after scroll
-            : 'border-black/30' // ✅ Light mode after scroll
-        : 'border-white/50';   // ✅ Default at top
+            ? 'border-black/50'
+            : 'border-black/30'
+        : 'border-white/50';
 
     return (
         <nav className={`fixed top-0 left-0 right-0 pt-8 px-[6vw] z-50 transition-all duration-300 ${bgClass}`}>
             <div className={`flex items-center justify-between font-semibold border-b ${borderClass} transition-all duration-300 px-4 pb-8`}>
-                {/* left */}
-                <div className='flex gap-6'>
-                    <a href="#" className='text-[14px]'>About</a>
-                    <a href="#" className='text-[14px]'>Works</a>
-                </div>
-
-                {/* middle */}
+                {/* Logo */}
                 <div>
-                    <p>Imane Magada</p>
+                    <p className='text-lg font-bold'>Imane Magada</p>
                 </div>
 
-                {/* right */}
-                <div className='flex gap-6'>
-                    <a href="#" className='text-[14px]'>Photography</a>
-                    <a href="#" className='text-[14px]'>Videos</a>
+                {/* Desktop Links */}
+                <div className="hidden md:flex gap-8 text-[14px]">
+                    <a href="#">About</a>
+                    <a href="#">Works</a>
+                    <a href="#">Photography</a>
+                    <a href="#">Videos</a>
+                </div>
+
+                {/* Mobile Toggle */}
+                <div className="md:hidden">
+                    <button onClick={toggleMenu}>
+                        {isMobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+                    </button>
                 </div>
             </div>
+
+            {/* Mobile Menu */}
+            {isMobileMenuOpen && (
+                <div className={`flex flex-col md:hidden gap-4 text-[14px] mt-4 px-4 pb-4 ${borderClass}`}>
+                    <a href="#">About</a>
+                    <a href="#">Works</a>
+                    <a href="#">Photography</a>
+                    <a href="#">Videos</a>
+                </div>
+            )}
         </nav>
     );
 };
