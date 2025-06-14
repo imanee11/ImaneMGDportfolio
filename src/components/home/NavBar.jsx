@@ -21,7 +21,7 @@ const NavBar = () => {
 
     const bgClass = scrolled
         ? darkMode
-            ? 'bg-black text-white'
+            ? 'bg-[#020f17] text-white'
             : 'bg-white text-black shadow-md'
         : 'bg-transparent text-white';
 
@@ -32,8 +32,8 @@ const NavBar = () => {
         : 'border-white/50';
 
     return (
-        <nav className={`fixed top-0 left-0 right-0 pt-8 px-[6vw] z-50 transition-all duration-300 ${bgClass}`}>
-            <div className={`flex items-center justify-between font-semibold border-b ${borderClass} transition-all duration-300 px-4 pb-8`}>
+        <nav className={`fixed top-0 left-0 right-0 pt-7 px-[6vw] z-50 transition-all duration-300 ${bgClass}`}>
+            <div className={`flex items-center justify-between font-semibold border-b ${borderClass} transition-all duration-300 px-4 pb-7`}>
                 {/* Logo */}
                 <div>
                     <p className='text-lg font-bold'>Imane Magada</p>
