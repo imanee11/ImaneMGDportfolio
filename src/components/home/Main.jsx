@@ -5,6 +5,12 @@ import { DarkModeContext } from '../../context/DarkModeContext';
 import { FiSun, FiMoon } from 'react-icons/fi';
 import ShinyText from '../animation/ShinyText';
 
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Carousel from '../animation/Carousel';
+
+
 const Main = () => {
     const { darkMode, setDarkMode } = useContext(DarkModeContext);
 
@@ -49,6 +55,21 @@ const Main = () => {
                 <section className='px-[6vw] pt-[5vh] md:pt-[10vh] text-black dark:text-white'>
                     <p className='font-bold text-center uppercase text-[23px] sm:text-[60px] md:text-[25px] leading-tight pb-7'>About me</p>
                     <p className='text-center md:w-[60vw] mx-auto'>Hi, I’m <span className='font-semibold italic text-[#5c9fa0]'>Imane Magada</span>, a passionate photographer and videographer who loves capturing life’s special moments. Through my lens, I create visuals that tell stories and leave lasting impressions. Whether it’s a beautiful landscape or a memorable event, I focus on authenticity and emotion. When I’m not behind the camera, I’m exploring new creative ideas and perfecting my craft. Let’s create something unforgettable together!</p>
+                </section>
+
+
+                {/* gallery */}
+                <section className="pt-[5vh] md:pt-[15vh] text-black dark:text-white overflow-x-hidden">
+                    <p className="text-center font-bold uppercase text-[30px] sm:text-[60px] md:text-[50px] leading-tight pb-10">
+                        MY GALLERY
+                    </p>
+                    <div className='pl-[6vw] '>
+                        <div className="flex justify-between items-center pb-4 text-sm md:text-base font-medium">
+                            <p>2021–2022</p>
+                            {/* <p className="text-blue-600 cursor-pointer hover:underline">VIEW ALL →</p> */}
+                        </div>
+                        <Carousel />
+                    </div>
                 </section>
 
 
