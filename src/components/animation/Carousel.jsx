@@ -62,11 +62,11 @@ function Carousel() {
     };
 
     return (
-        <div className="overflow-hidden">
+        <div className="overflow-hidden pb-4">
             <Slider {...settings}>
                 {image.map((img, index) => (
-                    <div key={index} className="pr-2">
-                        <div className="relative w-full h-[70vh] overflow-hidden shadow-lg">
+                    <div key={index} className="pr-2 pb-3">
+                        <div className="relative w-full h-[70vh] overflow-hidden">
                             <img src={img.src} alt={img.title} className="w-full h-full object-cover" />
                             <div className="absolute bottom-0 left-0 p-4 bg-gradient-to-t from-black/70 to-transparent w-full text-white">
                                 <h3 className="font-semibold text-sm md:text-lg">{img.title}</h3>
